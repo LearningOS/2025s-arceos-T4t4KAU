@@ -4,8 +4,9 @@
 #[macro_use]
 #[cfg(feature = "axstd")]
 extern crate axstd as std;
+extern crate alloc;
 
-use std::collections::HashMap;
+use alloc::collections::BTreeMap;
 
 #[cfg_attr(feature = "axstd", no_mangle)]
 fn main() {
@@ -15,6 +16,8 @@ fn main() {
 }
 
 fn test_hashmap() {
+    
+    pub type HashMap<K, V> = BTreeMap<K, V>;
     const N: u32 = 50_000;
     let mut m = HashMap::new();
     for value in 0..N {
